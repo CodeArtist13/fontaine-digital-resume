@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zachary George Fontaine | Code Architect</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for a technical, "blueprint" look -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blueprint-blue: #0A192F;
+            --grid-line: rgba(100, 255, 218, 0.1);
+            --copilot-gradient: linear-gradient(135deg, #0078D4, #A659FF);
+            --text-light: #E6F1FF;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--blueprint-blue);
+            /* Blueprint Grid Background */
+            background-image: 
+                linear-gradient(var(--grid-line) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: var(--text-light);
+            font-family: 'Inter', sans-serif;
+        }
+
+        header {
+            padding: 4rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--grid-line);
+        }
+
+        .brand-header {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 2.5rem;
+            background: var(--copilot-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        .subtitle {
+            font-family: 'JetBrains Mono', monospace;
+            opacity: 0.8;
+            margin-top: 10px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .architect-card {
+            border: 1px solid var(--grid-line);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        /* Blueprint "Corner Marks" */
+        .architect-card::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            width: 15px;
+            height: 15px;
+            border-top: 2px solid #0078D4;
+            border-left: 2px solid #0078D4;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand-header">Zachary George Fontaine</div>
+        <div class="subtitle">// CODE ARTIST & ARCHITECT</div>
+    </header>
+
+    <div class="container">
+        <section class="architect-card">
+            <h2>Building the Future of Automation</h2>
+            <p>Utilizing AI-augmented workflows to solve complex problems within governed environments.</p>
+            <p>Current Project: <strong>Digital Resume Core</strong></p>
+        </section>
+    </div>
+
+</body>
+</html>
