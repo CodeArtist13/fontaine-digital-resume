@@ -4,93 +4,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zachary George Fontaine | Code Architect</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts for a technical, "blueprint" look -->
+    <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --blueprint-blue: #0A192F;
-            --grid-line: rgba(100, 255, 218, 0.1);
-            --copilot-gradient: linear-gradient(135deg, #0078D4, #A659FF);
-            --text-light: #E6F1FF;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--blueprint-blue);
-            /* Blueprint Grid Background */
-            background-image: 
-                linear-gradient(var(--grid-line) 1px, transparent 1px),
-                linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-            background-size: 20px 20px;
-            color: var(--text-light);
-            font-family: 'Inter', sans-serif;
-        }
-
-        header {
-            padding: 4rem 2rem;
-            text-align: center;
-            border-bottom: 1px solid var(--grid-line);
-        }
-
-        .brand-header {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 2.5rem;
-            background: var(--copilot-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-        }
-
-        .subtitle {
-            font-family: 'JetBrains Mono', monospace;
-            opacity: 0.8;
-            margin-top: 10px;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .architect-card {
-            border: 1px solid var(--grid-line);
-            background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 4px;
-            position: relative;
-        }
-
-        /* Blueprint "Corner Marks" */
-        .architect-card::before {
-            content: '';
-            position: absolute;
-            top: -5px;
-            left: -5px;
-            width: 15px;
-            height: 15px;
-            border-top: 2px solid #0078D4;
-            border-left: 2px solid #0078D4;
-        }
-    </style>
 </head>
 <body>
 
-    <header>
-        <div class="brand-header">Zachary George Fontaine</div>
-        <div class="subtitle">// CODE ARTIST & ARCHITECT</div>
+    <header class="hero-banner">
+        <div class="blueprint-overlay"></div>
+        <div class="hero-content">
+            <h1 class="brand-name" id="wave-name">Zachary George Fontaine</h1>
+            <div class="subtitle">CODE ARTIST & ARCHITECT | AI-AUGMENTED DEVELOPER</div>
+            <a href="#portfolio" class="btn-architect">What To Look Forward To!</a>
+        </div>
     </header>
 
-    <div class="container">
-        <section class="architect-card">
-            <h2>Building the Future of Automation</h2>
-            <p>Utilizing AI-augmented workflows to solve complex problems within governed environments.</p>
-            <p>Current Project: <strong>Digital Resume Core</strong></p>
-        </section>
-    </div>
+    <main>
+        <section class="hook-section">
+            <div class="container">
+                <div class="hook-article">
+                    
+                    <div class="hook-content">
+                        <h2 class="section-title">THE GAP ARCHITECT: UNLOCKING SOLUTIONS WHERE OTHERS SEE ROADBLOCKS</h2>
+                        <p class="lead-text">
+                            "No matter the complexity, there is always a solution."
+                        </p>
+                        <p class="mission-description">
+                            Sixteen years of industrial evolution have taught me that true leadership happens in the midst of the group. I don’t just fix problems; I <strong>engineer outcomes</strong> designed for immediate tasks and long-term growth.
+                        </p>
+                        
+                        <div class="bio-actions">
+                            <a href="https://www.linkedin.com/in/zacharyfontaine" target="_blank" class="btn-architect">Connect on LinkedIn</a>
+                        </div>
+                    </div>
 
+                    <div class="hook-visual">
+                        <div class="portrait-frame frame-decor">
+                            <img src="assests/Profile_image.png" alt="Zachary George Fontaine" class="portrait-img">
+                        </div>
+                    </div>
+                        
+                </div> <div class="blueprint-divider"></div>
+            </div>
+        </section>
+
+        <div class="container" id="portfolio">
+            
+            <div class="stats-grid">
+                <div class="stat-item" title="Validated Industrial Bottom-Line Impact">
+                    <span class="stat-value">$500k+</span>
+                    <span class="stat-label">Material Savings</span>
+                </div>
+                
+                <div class="stat-item" title="Continuous Improvement (CI) and Lean manufacturing systems.">
+                    <span class="stat-value">16 Years</span>
+                    <span class="stat-label">Industrial Evolution</span>
+                </div>
+                
+                <div class="stat-item" title="Leading from the center. Decisive lateral leadership in high-stakes 24/7 environments.">
+                    <span class="stat-value">24/7</span>
+                    <span class="stat-label">Lateral Ops Leadership</span>
+                </div>
+            </div>
+
+            <section class="architect-card">
+                <div class="card-header">
+                    <span class="status-dot"></span>
+                    <h3>Featured: Inventory Middleware</h3>
+                </div>
+                <p>
+                    Developed an end-to-end automated solution integrating ERP data with SharePoint and MS Forms. 
+                    This "Code Artist" approach eliminated manual data gaps and secured $500,000 in material savings.
+                </p>
+                <div class="tech-stack">
+                    <span class="badge">Power Automate</span>
+                    <span class="badge">Adobe Automation</span>
+                    <span class="badge">Barcode Integration</span>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="function.js"></script>
 </body>
 </html>

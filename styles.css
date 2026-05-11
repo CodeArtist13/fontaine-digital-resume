@@ -1,0 +1,388 @@
+/* --- ARCHITECTURAL VARIABLES --- */
+:root {
+    --blueprint-blue: #0A192F;
+    --grid-line: rgba(100, 255, 218, 0.1);
+    /* Symmetric gradient: Starts and ends with #0078D4 for a perfect infinite loop */
+    --copilot-gradient: linear-gradient(90deg, #0078D4 0%, #A659FF 25%, #64FFDA 50%, #A659FF 75%, #0078D4 100%);
+    --accent-cyan: #64FFDA;
+    --text-light: #E6F1FF;
+    --card-bg: rgba(10, 25, 47, 0.85);
+}
+
+/* --- BASE STYLES --- */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--blueprint-blue);
+    /* Primary Blueprint Grid */
+    background-image: 
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 30px 30px;
+    color: var(--text-light);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* --- HERO BANNER (MOVING BACKGROUND & WAVE) --- */
+.hero-banner {
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    /* Base color flow */
+    background: var(--copilot-gradient);
+    background-size: 200% auto;
+    animation: gradientFlow 12s linear infinite; 
+    border-bottom: 1px solid var(--grid-line);
+}
+
+/* The Slow Motion Wave Distortion Layer */
+.hero-banner::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    /* Soft radial highlight that acts as the "wave" swell */
+    background: radial-gradient(
+        circle at center, 
+        rgba(255, 255, 255, 0.12) 0%, 
+        transparent 50%
+    );
+    /* Slow, drifting swell motion */
+    animation: slowWave 15s ease-in-out infinite;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.blueprint-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    /* Secondary Drafting Grid */
+    background-image: 
+        linear-gradient(var(--grid-line) 1.5px, transparent 1.5px),
+        linear-gradient(90deg, var(--grid-line) 1.5px, transparent 1.5px);
+    background-size: 60px 60px;
+    opacity: 0.15; 
+    z-index: 2; /* Sits above the wave, below the text */
+    pointer-events: none;
+}
+
+.hero-content { 
+    position: relative; 
+    z-index: 3; /* Keeps text above all background effects */
+}
+
+/* --- BRAND NAME (STATIC & CLEAN) --- */
+.brand-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(2rem, 6vw, 4rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin: 0;
+    color: #ffffff;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* Prevents JS-injected spans from waving or using gradients */
+#wave-name span {
+    display: inline-block;
+    background: none;
+    -webkit-text-fill-color: #ffffff;
+    animation: none !important;
+    transform: none !important;
+}
+
+.subtitle {
+    font-family: 'JetBrains Mono', monospace;
+    color: #ffffff;
+    opacity: 0.9;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    letter-spacing: 2.5px;
+    font-weight: 400;
+}
+
+/* --- CONTAINER & STATS --- */
+.container { 
+    max-width: 1000px; 
+    margin: 0 auto; 
+    padding: 5rem 1.5rem; 
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    margin-bottom: 5rem;
+}
+
+.stat-item {
+    border: 1px solid var(--grid-line);
+    padding: 2.5rem 1.5rem;
+    background: rgba(100, 255, 218, 0.02);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+    background: rgba(100, 255, 218, 0.05);
+}
+
+.stat-value {
+    display: block;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--accent-cyan);
+    font-family: 'JetBrains Mono', monospace;
+    margin-bottom: 5px;
+}
+
+.stat-label { 
+    font-size: 0.75rem; 
+    text-transform: uppercase; 
+    opacity: 0.7; 
+    letter-spacing: 1.5px;
+}
+
+/* --- ARCHITECTURAL CARDS --- */
+.architect-card {
+    border: 1px solid var(--grid-line);
+    background: var(--card-bg);
+    padding: 3rem;
+    position: relative;
+    backdrop-filter: blur(12px);
+    border-radius: 2px;
+}
+
+.architect-card::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    right: -3px;
+    width: 30px;
+    height: 30px;
+    border-bottom: 3px solid #A659FF;
+    border-right: 3px solid #A659FF;
+}
+
+.card-header { 
+    display: flex; 
+    align-items: center; 
+    gap: 15px; 
+    margin-bottom: 1.5rem; 
+}
+
+.status-dot {
+    width: 12px;
+    height: 12px;
+    background-color: var(--accent-cyan);
+    border-radius: 50%;
+    box-shadow: 0 0 12px var(--accent-cyan);
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 2rem;
+}
+
+.badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    padding: 6px 14px;
+    border: 1px solid var(--accent-cyan);
+    color: var(--accent-cyan);
+    background: rgba(100, 255, 218, 0.05);
+}
+
+/* --- BUTTONS --- */
+.btn-architect {
+    display: inline-block;
+    margin-top: 35px;
+    padding: 14px 28px;
+    border: 1px solid var(--accent-cyan);
+    color: var(--accent-cyan);
+    text-decoration: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.4s all ease;
+}
+
+.btn-architect:hover { 
+    background: var(--accent-cyan); 
+    color: var(--blueprint-blue);
+    box-shadow: 0 0 25px var(--accent-cyan); 
+}
+
+/* --- THE HOOK SECTION --- */
+.hook-section {
+    padding: 6rem 0;
+    background: rgba(100, 255, 218, 0.02);
+    border-bottom: 1px solid var(--grid-line);
+}
+
+.hook-content {
+    max-width: 850px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.section-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.2rem;
+    letter-spacing: 5px;
+    margin-bottom: 2.5rem;
+    background: var(--copilot-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.lead-text {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1.5rem, 4vw, 2.4rem);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+}
+
+.mission-description {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    opacity: 0.85;
+    max-width: 750px;
+    margin: 0 auto 3.5rem auto;
+    color: var(--text-light);
+}
+
+.blueprint-divider {
+    height: 1px;
+    width: 120px;
+    background: var(--copilot-gradient);
+    margin: 0 auto;
+    position: relative;
+    opacity: 0.6;
+}
+
+.blueprint-divider::before {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: var(--accent-cyan);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    box-shadow: 0 0 10px var(--accent-cyan);
+}
+
+/* --- GLOBAL ANIMATIONS --- */
+
+/* Horizontal background slide */
+@keyframes gradientFlow { 
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; } 
+}
+
+/* Vertical and scale swell for the "wave" */
+@keyframes slowWave {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translate(5%, 8%) scale(1.1);
+        opacity: 0.6;
+    }
+}
+/* --- HOOK SECTION LAYOUT --- */
+
+/* 1. The Master Container - This enables the side-by-side "Flex" */
+.hook-article {
+    display: flex;
+    align-items: center;      /* Vertically centers the text with the photo */
+    justify-content: space-between;
+    gap: 4rem;                /* Creates the gap between the bio and the image */
+    margin-bottom: 3rem;
+    text-align: left;         /* Keeps the professional article feel */
+}
+
+/* 2. The Text Column - Takes up slightly more space (1.2 ratio) */
+.hook-content {
+    flex: 1.2;
+}
+
+/* 3. The Visual Column - Takes up the remaining space (0.8 ratio) */
+.hook-visual {
+    flex: 0.8;
+    display: flex;
+    justify-content: center;
+}
+
+/* --- THE PORTRAIT FRAME --- */
+
+.portrait-frame {
+    position: relative;
+    padding: 10px;
+    border: 1px solid var(--grid-line);
+    background: rgba(100, 255, 218, 0.02); /* Very subtle cyan tint */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Adds depth */
+}
+
+.portrait-img {
+    width: 100%;
+    max-width: 380px;         /* Prevents the image from getting too huge */
+    height: auto;
+    display: block;
+    border: 1px solid var(--grid-line);
+}
+
+/* 4. The "Architect" Corner Mark */
+.frame-decor::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+    width: 40px;
+    height: 40px;
+    border-bottom: 3px solid var(--accent-cyan);
+    border-right: 3px solid var(--accent-cyan);
+}
+
+/* --- THE LINKEDIN BUTTON AREA --- */
+.bio-actions {
+    margin-top: 2.5rem;
+}
+
+/* --- RESPONSIVE DESIGN --- */
+
+/* On tablets and phones, stack the image on TOP of the text */
+@media (max-width: 900px) {
+    .hook-article {
+        flex-direction: column-reverse; /* Flips the order for mobile flow */
+        text-align: center;
+        gap: 2.5rem;
+    }
+    
+    .hook-content {
+        flex: 1;
+    }
+
+    .portrait-img {
+        max-width: 300px; /* Scales down for smaller screens */
+    }
+}
